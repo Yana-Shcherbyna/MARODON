@@ -63,7 +63,7 @@
     // Let's talk popup  
     const btn = document.querySelector('.btn_lets_talk');
     // const block = document.querySelector('.views_content');
-    const block = btn.parentElement; 
+    const block = btn.parentElement;
     const overlay = document.querySelector('.overlay');
     const closeBtn = document.querySelector('.popup_close');
     const header = document.querySelector('.header');
@@ -103,64 +103,35 @@
 
 
     // Accordion   
-      // const accordionHeaders = document.querySelectorAll('.accordion_header');
-      // const accordionItems = document.querySelectorAll('.accordion_item');
-    
-      // accordionHeaders.forEach(header => {
-      //   header.addEventListener('click', function (e) {
-      //     // e.preventDefault();
-      //     const item = this.closest('.accordion_item');
-      //     if (!item) return;
-    
-      //     const body = item.querySelector('.accordion_body');
-      //     const isOpen = body?.classList.contains('open');
-    
-      //     // закриваємо всі інші (кешований список)
-      //     accordionItems.forEach(i => {
-      //       if (i === item) return;
-      //       i.querySelector('.accordion_body')?.classList.remove('open');
-      //       i.querySelector('.accordion_header')?.classList.remove('active');
-      //     });
-    
-      //     body?.classList.toggle('open', !isOpen);
-      //     this.classList.toggle('active', !isOpen);
-      //   });
-      // });
+    // const accordionHeaders = document.querySelectorAll('.accordion_header');
+    // const accordionItems = document.querySelectorAll('.accordion_item');
 
-      // Accordion
-// document.addEventListener('DOMContentLoaded', () => {
-  const accordionItems = document.querySelectorAll('.accordion_item');
+    // accordionHeaders.forEach(header => {
+    //   header.addEventListener('click', function (e) {
+    //     // e.preventDefault();
+    //     const item = this.closest('.accordion_item');
+    //     if (!item) return;
 
-  accordionItems.forEach(item => {
-    const header = item.querySelector('.accordion_header');
-    const body = item.querySelector('.accordion_body');
+    //     const body = item.querySelector('.accordion_body');
+    //     const isOpen = body?.classList.contains('open');
 
-    if (!header || !body) return;
+    //     // закриваємо всі інші (кешований список)
+    //     accordionItems.forEach(i => {
+    //       if (i === item) return;
+    //       i.querySelector('.accordion_body')?.classList.remove('open');
+    //       i.querySelector('.accordion_header')?.classList.remove('active');
+    //     });
 
-    header.addEventListener('click', () => {
-      const isOpen = body.classList.contains('open');
-
-      // закриваємо всі інші
-      accordionItems.forEach(otherItem => {
-        const otherBody = otherItem.querySelector('.accordion_body');
-        const otherHeader = otherItem.querySelector('.accordion_header');
-
-        otherBody?.classList.remove('open');
-        otherHeader?.classList.remove('active');
-      });
-
-      // відкриваємо тільки потрібний
-      if (!isOpen) {
-        body.classList.add('open');
-        header.classList.add('active');
-      }
-    });
-  });
-// });
+    //     body?.classList.toggle('open', !isOpen);
+    //     this.classList.toggle('active', !isOpen);
+    //   });
+    // });
 
 
-   
-      
+
+
+
+
 
 
     // Delegation
@@ -284,3 +255,33 @@ function initIntroSoundToggle() {
 document.addEventListener('DOMContentLoaded', initIntroSoundToggle);
 
 
+// Accordion
+document.addEventListener('DOMContentLoaded', () => {
+  const accordionItems = document.querySelectorAll('.accordion_item');
+
+  accordionItems.forEach(item => {
+    const header = item.querySelector('.accordion_header');
+    const body = item.querySelector('.accordion_body');
+
+    if (!header || !body) return;
+
+    header.addEventListener('click', (e) => {
+      const isOpen = body.classList.contains('open');
+
+      // закриваємо всі інші
+      accordionItems.forEach(otherItem => {
+        const otherBody = otherItem.querySelector('.accordion_body');
+        const otherHeader = otherItem.querySelector('.accordion_header');
+
+        otherBody?.classList.remove('open');
+        otherHeader?.classList.remove('active');
+      });
+
+      // відкриваємо тільки потрібний
+      if (!isOpen) {
+        body.classList.add('open');
+        header.classList.add('active');
+      }
+    });
+  });
+});
