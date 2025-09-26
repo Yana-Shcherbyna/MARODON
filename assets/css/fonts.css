@@ -1,0 +1,61 @@
+/* ==============================
+   D-DIN Condensed
+============================== */
+@font-face {
+  font-family: "D-DIN";
+  src: url('../fonts/D-DIN/D-DINCondensed.woff2') format('woff2'),
+  url('../fonts/D-DIN/D-DINCondensed.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "D-DIN";
+  src: url('../fonts/D-DIN/D-DINCondensed-Bold.woff2') format('woff2'),
+  url('../fonts/D-DIN/D-DINCondensed-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+} 
+
+/* ==============================
+   Anton
+============================== */
+@font-face {
+  font-family: "Anton";
+  src: url('../fonts/Anton/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+} 
+
+/* ==============================
+   Montserrat
+============================== */
+@font-face {
+  font-family: 'Montserrat';
+  src:  url('../fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==============================
+   Brygada 1918
+============================== */
+@font-face {
+  font-family: 'Brygada-1918';
+  src: url('../fonts/Brigada1918/static/Brygada1918-Italic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
