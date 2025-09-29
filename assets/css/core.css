@@ -95,13 +95,14 @@ h6 {
 }
 
 h1 {
-  font-size: clamp(50px, 7.5vw, 126px);
+  /* font-size: clamp(50px, 7.5vw, 126px); */
+  font-size: clamp(50px, calc(50px + (126 - 50) * ((100vw - 320px) / (2440 - 320))), 126px);
   font-weight: 400;
   font-family: "Anton", sans-serif;
 }
 
 h2 {
-  font-size: clamp(45px, 5.5vw, 84px);
+  font-size: clamp(45px, calc(45px + (84 - 45) * ((100vw - 320px) / (2440 - 320))), 84px);
   font-weight: 400;
   font-family: "Anton", sans-serif;
 }
@@ -272,12 +273,12 @@ table th {
 /*Table end*/
 
 .content {
-  padding-top: 189px;
+  padding-top: 187px;
 }
 
 @media (max-width: 2440px) {
   .content {
-    padding-top: calc(79px + (188 - 79) * ((100vw - 768px) / (2440 - 768)));
+    padding-top: calc(79px + (187 - 79) * ((100vw - 768px) / (2440 - 768)));
   }
 }
 

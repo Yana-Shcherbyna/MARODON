@@ -101,39 +101,6 @@
       watchOverflow: true,
     });
 
-
-    // Accordion   
-    // const accordionHeaders = document.querySelectorAll('.accordion_header');
-    // const accordionItems = document.querySelectorAll('.accordion_item');
-
-    // accordionHeaders.forEach(header => {
-    //   header.addEventListener('click', function (e) {
-    //     // e.preventDefault();
-    //     const item = this.closest('.accordion_item');
-    //     if (!item) return;
-
-    //     const body = item.querySelector('.accordion_body');
-    //     const isOpen = body?.classList.contains('open');
-
-    //     // закриваємо всі інші (кешований список)
-    //     accordionItems.forEach(i => {
-    //       if (i === item) return;
-    //       i.querySelector('.accordion_body')?.classList.remove('open');
-    //       i.querySelector('.accordion_header')?.classList.remove('active');
-    //     });
-
-    //     body?.classList.toggle('open', !isOpen);
-    //     this.classList.toggle('active', !isOpen);
-    //   });
-    // });
-
-
-
-
-
-
-
-
     // Delegation
     document.body.addEventListener('click', onBodyClick);
 

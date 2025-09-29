@@ -426,7 +426,7 @@
   margin-bottom: 0;
 }
 
-.services_content {
+.services_section .services_content {
   color: var(--black);
   display: block;
   margin-left: 50px;
@@ -870,14 +870,12 @@
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
-  padding-right: 40px; /* місце для стрілки */
+  padding-right: 40px;
   cursor: pointer;
 }
 
 .accordion_header h2 {
   color: white;
-  /* pointer-events: none; */
-  /* text-align: left; */
 }
 
 .accordion_header::after {

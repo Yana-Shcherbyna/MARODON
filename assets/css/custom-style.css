@@ -51,18 +51,24 @@
 .services_block {
   margin-top: -290px;
   padding-bottom: 120px;
+  position: relative;
+}
+
+.services_block .container_big{
+  position: relative;
 }
 
 .services_page_content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  position: relative;
+  /* position: relative; */
 }
 
-.services_page_content .btn_lets_talk {
+.services_block .btn_lets_talk {
   position: absolute;
-  right: -5px;
+  /* right: -5px; */
+  right: 10px;
   top: -30px;
 }
 
@@ -70,11 +76,7 @@
   background-color: var(--black);
   padding: 75px 60px;
   display: grid;
-  /* grid-template-columns: 1fr; */
-  /* grid-template-rows: 1fr minmax(100px, auto) 30px; */
   grid-template-rows: minmax(300px, auto) 1fr 30px;
-  /* display: flex;
-  flex-direction: column; */
   position: relative;
 }
 
@@ -230,5 +232,34 @@
 /* Services page end */
 
 /* Services single page */
+.page h1{
+  /* margin-top: -290px; */
+  color: var(--accent);
+  text-transform: uppercase;
+}
 
+.service_single_item h4{
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.service_single_item{
+  background-color: var(--black);
+  color: white;
+  font-size: 20px;
+}
+
+.services_single_item_icon img{
+  filter: brightness(0) saturate(100%) invert(15%) sepia(93%) saturate(4454%) hue-rotate(351deg) brightness(63%) contrast(88%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service_single_item:hover .services_single_item_icon img{
+    filter: brightness(0) saturate(100%) invert(48%) sepia(46%) saturate(4480%) hue-rotate(326deg) brightness(107%) contrast(88%);
+  }
+
+  .service_single_item:hover{
+    background-color: #fff  ;
+  }
+}
 /* Services single page end */
