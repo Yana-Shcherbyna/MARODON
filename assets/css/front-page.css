@@ -877,6 +877,7 @@
 .accordion_header h2 {
   color: white;
   margin-bottom: 0;
+  font-size: clamp(45px, calc(45px + (70 - 45) * ((100vw - 320px) / (2440 - 320))), 70px);
 }
 
 .accordion_header::after {
