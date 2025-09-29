@@ -643,15 +643,15 @@ table th {
 
 /* Let's talk btn*/
 .btn_lets_talk {
+  position: relative;
   z-index: 90;
-  top: 0;
   right: 0;
 }
 
 .btn_fixed {
   position: fixed !important;
-  top: 220px !important;
   right: 20px !important;
+  bottom: 120px!important;
 }
 
 /* Оверлей та попап */
@@ -687,9 +687,9 @@ table th {
 
 @media (max-width: 2440px) {
   .btn_fixed {
-    top: calc(
+    /* top: calc(
       110px + (220 - 110) * ((100vw - 768px) / (2440 - 768))
-    ) !important;
+    ) !important; */
   }
 }
 

@@ -80,6 +80,7 @@
       }
     });
 
+
     // Попап
     btn.addEventListener('click', () => overlay.style.display = 'flex');
     closeBtn.addEventListener('click', () => overlay.style.display = 'none');
@@ -100,6 +101,59 @@
       spaceBetween: 30,
       watchOverflow: true,
     });
+
+
+// const sections = document.querySelectorAll('.fade');
+
+// const observer = new IntersectionObserver((entries) => {
+//   entries.forEach(entry => {
+//     if (entry.isIntersecting) {
+//       entry.target.classList.add('visible');
+//     } else {
+//       entry.target.classList.remove('visible'); // щоб фейд повторювався при скролі
+//     }
+//   });
+// }, { threshold: 0.2 });
+
+// sections.forEach(section => observer.observe(section));
+// IntersectionObserver для fade
+// IntersectionObserver для fade (opacity лише)
+
+const sections = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    console.log(entry);
+    
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(section => observer.observe(section));
+
+// Скрол для кнопки
+// const buttons = document.querySelectorAll('.btn_lets_talk');
+
+// buttons.forEach(btn => {
+//   const block = btn.closest('.fade');
+//   const header = document.querySelector('.header');
+
+//   window.addEventListener('scroll', () => {
+//     const blockRect = block.getBoundingClientRect();
+//     const headerHeight = header.offsetHeight;
+
+//     if (blockRect.top < headerHeight) {
+//       btn.classList.add('btn_fixed');
+//     } else {
+//       btn.classList.remove('btn_fixed');
+//     }
+//   });
+// });
+
 
     // Delegation
     document.body.addEventListener('click', onBodyClick);
@@ -251,4 +305,94 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.about_nums_item');
+  const nums = document.querySelectorAll('.about_num');
+  const container = document.querySelector('.about_nums');
+  if (!container) return;
+
+  let countersAnimated = false;
+  const counterDuration = 2000; // ms — час, за який повинні завершитися ВСІ лічильники
+
+  // 1) observer для появи елементів (працює кожного разу при вході/виході)
+  const itemsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.25 });
+
+  items.forEach(item => itemsObserver.observe(item));
+
+  // допоміжна функція: суфікс (наприклад "+") з textContent
+  const getSuffix = (el) => {
+    const m = el.textContent.match(/(\D+)$/);
+    return m ? m[1] : '';
+  };
+
+  // 2) синхронна анімація ВСІХ лічильників за допомогою requestAnimationFrame
+  function animateAllCounters(duration) {
+    const startTime = performance.now();
+    const targets = Array.from(nums).map(n => +n.getAttribute('data-target') || 0);
+    const suffixes = Array.from(nums).map(n => getSuffix(n));
+
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easing (easeOutCubic) — можна поміняти
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      nums.forEach((n, i) => {
+        const value = Math.floor(eased * targets[i]);
+        n.textContent = value + (suffixes[i] || '');
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        // остаточне значення
+        nums.forEach((n, i) => n.textContent = targets[i] + (suffixes[i] || ''));
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  // 3) observer для запуску лічильників один раз (спостерігаємо за контейнером)
+  const countersObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !countersAnimated) {
+        countersAnimated = true;
+
+        // зробити перехід появи елементів таким же довгим, як лічильник
+        container.style.setProperty('--about_appear', counterDuration + 'ms');
+
+        // додати visible для тих items, які зараз у viewport — щоб їхня анімація стартувала одночасно
+        items.forEach(item => {
+          const rect = item.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            item.classList.add('visible');
+          }
+        });
+
+        // запустити синхронні лічильники
+        animateAllCounters(counterDuration);
+
+        // через duration повернути змінну назад до дефолту (щоб наступні входи/виходи анімувались коротше)
+        setTimeout(() => {
+          container.style.removeProperty('--about_appear');
+        }, counterDuration + 50);
+
+        // більше не потрібно спостерігати
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+
+  countersObserver.observe(container);
 });
