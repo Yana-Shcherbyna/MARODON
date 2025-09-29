@@ -695,7 +695,7 @@ table th {
 
 @media (max-width: 768px) {
   .btn_fixed {
-    top: 110px;
+    /* top: 110px; */
   }
 
   .btn_lets_talk {
