@@ -862,7 +862,7 @@
 .accordion_item {
   background-color: var(--black-light);
   border: 1px solid white;
-  padding: 70px;
+  padding: 65px;
 }
 
 .accordion_header {
@@ -876,6 +876,7 @@
 
 .accordion_header h2 {
   color: white;
+  margin-bottom: 0;
 }
 
 .accordion_header::after {
@@ -932,7 +933,7 @@
     width: calc(26px + (35 - 26) * ((100vw - 320px) / (2440 - 320)));
   }
   .accordion_item {
-    padding: calc(20px + (70 - 20) * ((100vw - 320px) / (2440 - 320)));
+    padding: calc(20px + (65 - 20) * ((100vw - 320px) / (2440 - 320)));
   }
 }
 
