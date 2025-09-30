@@ -102,57 +102,21 @@
       watchOverflow: true,
     });
 
+    // Fade for blocks
+    const sections = document.querySelectorAll('.fade');
 
-// const sections = document.querySelectorAll('.fade');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
 
-// const observer = new IntersectionObserver((entries) => {
-//   entries.forEach(entry => {
-//     if (entry.isIntersecting) {
-//       entry.target.classList.add('visible');
-//     } else {
-//       entry.target.classList.remove('visible'); // щоб фейд повторювався при скролі
-//     }
-//   });
-// }, { threshold: 0.2 });
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.2 });
 
-// sections.forEach(section => observer.observe(section));
-// IntersectionObserver для fade
-// IntersectionObserver для fade (opacity лише)
-
-const sections = document.querySelectorAll('.fade');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    } else {
-      entry.target.classList.remove('visible');
-    }
-  });
-}, { threshold: 0.2 });
-
-sections.forEach(section => observer.observe(section));
-
-// Скрол для кнопки
-// const buttons = document.querySelectorAll('.btn_lets_talk');
-
-// buttons.forEach(btn => {
-//   const block = btn.closest('.fade');
-//   const header = document.querySelector('.header');
-
-//   window.addEventListener('scroll', () => {
-//     const blockRect = block.getBoundingClientRect();
-//     const headerHeight = header.offsetHeight;
-
-//     if (blockRect.top < headerHeight) {
-//       btn.classList.add('btn_fixed');
-//     } else {
-//       btn.classList.remove('btn_fixed');
-//     }
-//   });
-// });
-
+    sections.forEach(section => observer.observe(section));
 
     // Delegation
     document.body.addEventListener('click', onBodyClick);

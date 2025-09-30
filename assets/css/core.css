@@ -60,9 +60,15 @@ main {
   padding: 0 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px){
   body {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
   }
 
   .container_big,
@@ -694,8 +700,6 @@ table th {
 }
 
 @media (max-width: 768px) {
- 
-
   .btn_lets_talk {
     padding: 8px 12px;
   }

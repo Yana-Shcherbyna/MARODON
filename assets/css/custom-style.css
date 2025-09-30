@@ -86,7 +86,6 @@
 
 .service_page_item .services_content {
   color: white;
-  /* flex: auto; */
   margin-left: 0;
 }
 
@@ -233,7 +232,6 @@
 
 /* Services single page */
 .page h1 {
-  /* margin-top: -290px; */
   color: var(--accent);
   text-transform: uppercase;
 }
@@ -246,14 +244,13 @@
 
 .service_single_item h4 {
   color: var(--accent);
-  text-transform: uppercase;
 }
 
 .service_single_item {
   background-color: var(--black);
   color: white;
   font-size: 20px;
-  padding: 25px 30px;
+  padding: 27px 30px;
   position: relative;
 }
 
@@ -271,6 +268,7 @@
 .services_single_item_icon img {
   filter: brightness(0) saturate(100%) invert(15%) sepia(93%) saturate(4454%)
     hue-rotate(351deg) brightness(63%) contrast(88%);
+  height: 160px;
 }
 
 .services_item_link {
@@ -282,6 +280,71 @@
 .services_item_link img {
   filter: brightness(0) saturate(100%) invert(35%) sepia(6%) saturate(10%)
     hue-rotate(54deg) brightness(95%) contrast(81%);
+}
+
+.advantages {
+  background-color: var(--accent);
+  color: white;
+  padding: 90px 0 100px 0;
+}
+
+.advantages h2 {
+  margin-bottom: 40px;
+  color: white;
+}
+
+.advantages h4 {
+  color: white;
+  text-transform: uppercase;
+}
+
+.advantages_content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 150px;
+  row-gap: 40px;
+}
+
+.benefits {
+  padding: 90px 0 100px 0;
+}
+
+.benefits h2 {
+  margin-bottom: 40px;
+}
+
+.benefits_list {
+  counter-reset: step-counter; /* починаємо рахунок */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+  gap: 40px;
+}
+
+.benefits_item {
+  position: relative;
+  padding-left: 100px;
+}
+
+.benefits_item::before {
+  counter-increment: step-counter; /* додаємо крок */
+  content: counter(step-counter, decimal-leading-zero); /* 01, 02, 03... */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 40px;
+  font-weight: 700;
+  /* color: #000; */
+  font-family: "D-DIN", sans-serif;
+  font-weight: 700;
+  font-size: clamp(
+    84px,
+    calc(84px + (126 - 84) * ((100vw - 320px) / (2440 - 320))),
+    126px
+  );
+  line-height: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -301,6 +364,109 @@
   .service_single_item:hover {
     background-color: var(--accent);
     color: white;
+  }
+}
+
+.service_single_item:active {
+  background-color: var(--accent);
+}
+
+.service_single_item:active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f33a3d59;
+  backdrop-filter: blur(3px);
+  z-index: 10;
+}
+
+.goals {
+  background-color: var(--black);
+  color: white;
+  padding: 90px 0 100px 0;
+}
+
+.goals h2 {
+  color: #fff;
+}
+
+.goals_item {
+  margin-bottom: 100px;
+}
+
+@media (max-width: 2440px) {
+  .services_single_item_icon img {
+    height: calc(75px + (160 - 75) * ((100vw - 320px) / (2440 - 320)));
+  }
+
+  .advantages_content {
+    column-gap: calc(50px + (150 - 50) * ((100vw - 320px) / (2440 - 320)));
+  }
+
+  .advantages,
+  .benefits,
+  .goals {
+    padding-top: calc(30px + (90 - 30) * ((100vw - 320px) / (2440 - 320)));
+    padding-bottom: calc(30px + (100 - 30) * ((100vw - 320px) / (2440 - 320)));
+  }
+
+  .goals_item {
+    margin-bottom: calc(40px + (100 - 40) * ((100vw - 320px) / (2440 - 320)));
+  }
+}
+
+@media (max-width: 768px) {
+  .services_single_content {
+    grid-template-columns: 1fr;
+  }
+
+  .services_text {
+    display: none;
+  }
+
+  .service_single_item {
+    display: flex;
+    align-items: center;
+  }
+
+  .service_single_item h4 {
+    margin-bottom: 0;
+  }
+
+  .services_single_item_icon {
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .service_single_item:active h4 {
+    color: white;
+  }
+
+  .service_single_item:active::before {
+    content: none;
+  }
+
+  .service_single_item:active .services_single_item_icon img {
+    filter: brightness(0) saturate(100%) invert(89%) sepia(18%) saturate(7437%)
+      hue-rotate(300deg) brightness(105%) contrast(90%);
+  }
+
+  .service_single_item:active .services_item_link img {
+    filter: unset;
+  }
+
+  .advantages_content,
+  .benefits_list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 577px) {
+  .benefits_item {
+    padding-left: 80px;
   }
 }
 /* Services single page end */

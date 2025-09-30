@@ -167,7 +167,10 @@
   border: 1.5px solid white;
   border-radius: 30px;
   max-width: 230px;
-  display: flex;
+  min-width: 105px;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: auto auto;
   align-items: center;
   overflow: hidden;
 }
@@ -176,8 +179,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
-  padding: 12px 24px;
+  /* flex: 1; */
+  /* padding: 12px 24px; */
+  padding: 12px;
   cursor: pointer;
   gap: 10px;
   /* transition: all 0.3s ease; */
@@ -194,6 +198,11 @@
 .btn_like {
   border-left: 1.5px solid white;
   transition: all 0s;
+}
+
+.btn_like img{
+  height: 33px;
+  width: 33px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -226,6 +235,16 @@
   .views_title {
     text-align: center;
   }
+
+  .btn_reaction img {
+    width: calc(12px + (18 - 10) * ((100vw - 320px) / (1200 - 320)));
+    height: calc(12px + (18 - 10) * ((100vw - 320px) / (1200 - 320)));
+  }
+
+  .btn_like img{
+    height:  calc(18px + (33 - 18) * ((100vw - 320px) / (1200 - 320)));
+    width:  calc(18px + (33 - 18) * ((100vw - 320px) / (1200 - 320)));
+  }
 }
 
 @media (max-width: 768px) {
@@ -242,7 +261,8 @@
   }
 
   .btn_reaction {
-    padding: 12px 25px;
+    /* padding: 12px 25px; */
+    padding: 12px;
   }
 }
 
@@ -259,7 +279,7 @@
 
 @media (max-width: 480px) {
   .btn_reaction {
-    padding: 11px 8px;
+    padding: 10px 8px;
   }
 }
 
@@ -578,6 +598,9 @@
     content: unset;
   }
 
+  .services_section .services_content{
+    display: none;
+  }
   /* .services_item:active {
     background-color: var(--accent);
     color: white;
