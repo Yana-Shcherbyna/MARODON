@@ -594,6 +594,17 @@
   margin-bottom: 50px;
 }
 
+.services_sub{  
+  padding: 80px 0 100px 0;
+}
+
+@media (max-width: 2440px){
+  .services_sub{
+    padding-top: calc(30px + (80 - 30) * ((100vw - 320px) / (2440 - 320)));
+    padding-bottom: calc(50px + (100 - 50) * ((100vw - 320px) / (2440 - 320)));
+  }
+}
+
 @media (max-width: 1600px) {
   .sub_icon_bg.left {
     left: 0;
