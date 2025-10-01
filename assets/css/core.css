@@ -805,7 +805,7 @@ table th {
   position: relative;
   overflow: auto;
   max-height: 90vh;
-  /* max-width: 400px; */
+  max-width: 1440px;
 }
 
 .popup h2,
