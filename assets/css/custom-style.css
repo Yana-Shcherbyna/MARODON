@@ -227,6 +227,10 @@
   .service_page_item:active::before {
     content: unset;
   }
+
+  .service_page_item .services_content {
+    display: none;
+  }
 }
 /* Services page end */
 
@@ -470,3 +474,155 @@
   }
 }
 /* Services single page end */
+
+/* Services sub page */
+.services_sub_page {
+  position: relative;
+}
+
+.btn_more {
+  display: none;
+}
+
+.services_sub_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons_bg_wrapper {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.sub_icon_bg {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.sub_icon_bg.left {
+  left: 0;
+  top: 300px;
+}
+
+.sub_icon_bg.right {
+  right: 5%;
+  top: 650px;
+  transform: scale(1.5);
+}
+
+@media (max-width: 1600px) {
+  .sub_icon_bg.left {
+    left: 0;
+  }
+}
+
+@media (max-width: 1440px) {
+  .sub_icon_bg.right {
+    right: -50px;
+  }
+  .sub_icon_bg.left {
+    left: -50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sub_icon_bg {
+    display: none;
+  }
+
+  .services_sub_wrapper {
+    position: relative;
+  }
+
+  .services_sub {
+    max-height: 1300px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+
+  .services_sub_wrapper.open .services_sub {
+    max-height: 10000px;
+  }
+
+  .btn_more {
+    display: none;
+    margin: 20px auto;
+    border: none;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .btn_more.show {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+/* Services sub page end */
+
+/* Cases page*/
+.cases_page .works{
+  background-color: white;
+  padding-top: 50px;
+}
+
+.services_list{
+  padding: 70px 0 100px 0;
+}
+
+.services_list .services_title h2{
+  font-size: clamp(
+    50px,
+    calc(50px + (70 - 50) * ((100vw - 320px) / (2440 - 320))),
+    70px
+  );
+}
+
+.services_list .services_title h4{
+  color: var(--accent);
+}
+
+.services_list .service_page_item{
+  grid-template-rows: minmax(150px, auto) 20px;
+}
+
+.services_list .service_page_item .services_title{
+  margin-bottom: 0;
+}
+
+.cases_page .btn_lets_talk{
+  display: block;
+  margin-left: auto;
+  margin-bottom: -30px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service_page_item:hover .services_title h4{
+    color: white;
+  }  
+}
+
+.service_page_item:active .services_title h4{
+  color: white;
+}
+
+@media (max-width: 991px){
+  .cases_page .works{
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 768px){
+  .cases_page .works{
+    padding-top: 10px;
+  }
+}
+/* Cases page end */

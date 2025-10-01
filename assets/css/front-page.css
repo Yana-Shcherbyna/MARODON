@@ -643,6 +643,7 @@
   position: relative;
   z-index: 0;
   max-height: 310px;
+  color: white;
 }
 
 .works_item:nth-child(1) {

@@ -10,13 +10,57 @@
     <div class="wrapper">
       <div class="overlay">
         <div class="popup">
-          <form>
-            <input type="text" placeholder="Ваше ім'я" />
-            <input type="email" placeholder="Email" />
-            <textarea placeholder="Повідомлення"></textarea>
-            <button type="submit">Відправити</button>
-          </form>
-          <button class="popup_close">Закрити</button>
+          <button class="popup_close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="40" width="40">
+              <path
+                d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"
+              />
+            </svg>
+          </button>
+          <div class="contact_form_box">
+            <div class="contact_form_text">
+              <h2 class="contact_form_title">Let’s talk</h2>
+              <p class="contact_form_subtitle">
+                Let’s start a conversation and find the best solution together
+              </p>
+            </div>
+
+            <form class="contact_form">
+              <div class="form_row">
+                <input
+                  type="text"
+                  name="your-name"
+                  placeholder="Your name*"
+                  required
+                />
+              </div>
+
+              <div class="form_row">
+                <input
+                  type="email"
+                  name="your-email"
+                  placeholder="Email*"
+                  required
+                />
+              </div>
+
+              <div class="form_row">
+                <input
+                  type="tel"
+                  name="your-phone"
+                  placeholder="Mobile number"
+                />
+              </div>
+
+              <div class="form_row form_textarea">
+                <textarea
+                  name="your-message"
+                  placeholder="Tell about the project"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn">Send</button>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -89,65 +133,67 @@
         </section>
 
         <!-- Views section -->
-          <section class="views ">
-            <div class="container_big">
-              <div class="views_wrapper">
-                <div class="views_title fade">CREATIVE MARKETING AGENCY MARODON</div>
-                <div class="views_content">
-                  <div class="views_block fade">
-                    <span class="views_number">125K VIEWS</span>
+        <section class="views">
+          <div class="container_big">
+            <div class="views_wrapper">
+              <div class="views_title fade">
+                CREATIVE MARKETING AGENCY MARODON
+              </div>
+              <div class="views_content">
+                <div class="views_block fade">
+                  <span class="views_number">125K VIEWS</span>
 
-                    <div class="reactions">
-                      <button class="btn_reaction btn_dislike">
-                        <img src="assets/img/dislike.svg" alt="Dislike" />
-                      </button>
+                  <div class="reactions">
+                    <button class="btn_reaction btn_dislike">
+                      <img src="assets/img/dislike.svg" alt="Dislike" />
+                    </button>
 
-                      <button class="btn_reaction btn_like">
-                        <span class="reaction_count">2.5K</span>
-                        <img src="assets/img/like.svg" alt="Like" />
-                      </button>
-                    </div>
+                    <button class="btn_reaction btn_like">
+                      <span class="reaction_count">2.5K</span>
+                      <img src="assets/img/like.svg" alt="Like" />
+                    </button>
                   </div>
-
-                  <button class="btn_lets_talk btn">
-                    <span>Let's Talk</span>
-                    <img src="assets/img/lets-talk.svg" alt="Lets talk" />
-                  </button>
                 </div>
+
+                <button class="btn_lets_talk btn">
+                  <span>Let's Talk</span>
+                  <img src="assets/img/lets-talk.svg" alt="Lets talk" />
+                </button>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <!-- About numbers section -->
-          <section class="about_num_section ">
-            <div class="about_num_bg">
-              <img src="assets/img/about_bg.png" alt="Background" />
-            </div>
-            <div class="container">
-              <div class="about_nums fade">
-                <div class="about_nums_item">
-                  <span class="about_num" data-target="2000">2000+</span>
-                  <div class="about_label">ads launched</div>
-                  <span class="about_sub_label">per month</span>
-                </div>
-                <div class="about_nums_item">
-                  <span class="about_num" data-target="20">20+</span>
-                  <div class="about_label">employees</div>
-                  <span class="about_sub_label">in our great team</span>
-                </div>
-                <div class="about_nums_item">
-                  <span class="about_num" data-target="5">5+</span>
-                  <div class="about_label">years experience</div>
-                  <span class="about_sub_label">average employee</span>
-                </div>
-                <div class="about_nums_item">
-                  <span class="about_num" data-target="34">34</span>
-                  <div class="about_label">Projects done</div>
-                  <span class="about_sub_label">since 2024</span>
-                </div>
+        <!-- About numbers section -->
+        <section class="about_num_section">
+          <div class="about_num_bg">
+            <img src="assets/img/about_bg.png" alt="Background" />
+          </div>
+          <div class="container">
+            <div class="about_nums fade">
+              <div class="about_nums_item">
+                <span class="about_num" data-target="2000">2000+</span>
+                <div class="about_label">ads launched</div>
+                <span class="about_sub_label">per month</span>
+              </div>
+              <div class="about_nums_item">
+                <span class="about_num" data-target="20">20+</span>
+                <div class="about_label">employees</div>
+                <span class="about_sub_label">in our great team</span>
+              </div>
+              <div class="about_nums_item">
+                <span class="about_num" data-target="5">5+</span>
+                <div class="about_label">years experience</div>
+                <span class="about_sub_label">average employee</span>
+              </div>
+              <div class="about_nums_item">
+                <span class="about_num" data-target="34">34</span>
+                <div class="about_label">Projects done</div>
+                <span class="about_sub_label">since 2024</span>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
         <!-- Services section -->
         <section class="services_section fade">
@@ -764,157 +810,152 @@
 
         <!-- Footer -->
         <!-- <footer class="footer"></footer> -->
-      
-          <!-- Accordion -->
-          <section class="accordion_section">
+
+        <!-- Accordion -->
+        <section class="accordion_section">
+          <div class="container">
+            <div class="accordion fade">
+              <div class="accordion_item">
+                <div class="accordion_header">
+                  <h2>Why choose our digital marketing and creative agency?</h2>
+                </div>
+                <div class="accordion_body">
+                  <div class="accordion_content">
+                    <div class="accordion_body_item">
+                      <h4>Integrated Intelligence</h4>
+                      <div>
+                        We've dismantled the traditional agency structure where
+                        creative teams and strategic teams operate in separate
+                        universes.  At Marodon, your data analysts sit with your
+                        designers. It means that insights don't get lost in
+                        translation, and creative inspiration is anchored in
+                        business reality.
+                      </div>
+                    </div>
+                    <div class="accordion_body_item">
+                      <h4>Client Partnership Model</h4>
+                      <div>
+                        We've thrown out the rulebook and replaced the typical
+                        client-vendor dynamic with a partnership model
+                        instead. Transparent communication about what's working
+                        and what isn't, collaborative problem-solving rather
+                        than order-taking, and a shared investment in outcomes.
+                        Your success metrics are our success metrics!
+                      </div>
+                    </div>
+                    <div class="accordion_body_item">
+                      <h4>Cross-Pollinated Expertise</h4>
+                      <div>
+                        Our team members are cross-trained across lots of
+                        different marketing functions. Your social media
+                        strategist knows how to use conversion rate
+                        optimisation. Your copywriter gets analytics. Which is
+                        great for seeing opportunities others might have missed.
+                      </div>
+                    </div>
+                    <div class="accordion_body_item">
+                      <h4>Adaptive Execution</h4>
+                      <div>
+                        Markets evolve. Algorithms change. Attention patterns
+                        shift. Our work evolves with all of the above. We build
+                        flexibility into all campaigns, monitoring performance
+                        signals to refine approach without waiting for quarterly
+                        reviews. Your marketing will roll with the punches as a
+                        result.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion_item">
+                <div class="accordion_header">
+                  <h2>
+                    Content Creation Marketing Agency - Let Us Help You Succeed
+                  </h2>
+                </div>
+                <div class="accordion_body">
+                  <div class="accordion_content">
+                    <p>Відповідь на питання 2.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion_item">
+                <div class="accordion_header">
+                  <h2>
+                    MARODON - Where Analysis, Strategy and Creativity Come
+                    Together Perfectly
+                  </h2>
+                </div>
+                <div class="accordion_body">
+                  <div class="accordion_content">
+                    <p>Відповідь на питання 3.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ accordion -->
+        <section class="faq_section">
+          <div class="faq_title fade">
             <div class="container">
-              <div class="accordion fade">
-                <div class="accordion_item">
-                  <div class="accordion_header">
-                    <h2>
-                      Why choose our digital marketing and creative agency?
-                    </h2>
-                  </div>
-                  <div class="accordion_body">
-                    <div class="accordion_content">
-                      <div class="accordion_body_item">
-                        <h4>Integrated Intelligence</h4>
-                        <div>
-                          We've dismantled the traditional agency structure
-                          where creative teams and strategic teams operate in
-                          separate universes.  At Marodon, your data analysts
-                          sit with your designers. It means that insights don't
-                          get lost in translation, and creative inspiration is
-                          anchored in business reality.
-                        </div>
-                      </div>
-                      <div class="accordion_body_item">
-                        <h4>Client Partnership Model</h4>
-                        <div>
-                          We've thrown out the rulebook and replaced the typical
-                          client-vendor dynamic with a partnership model
-                          instead. Transparent communication about what's
-                          working and what isn't, collaborative problem-solving
-                          rather than order-taking, and a shared investment in
-                          outcomes. Your success metrics are our success
-                          metrics!
-                        </div>
-                      </div>
-                      <div class="accordion_body_item">
-                        <h4>Cross-Pollinated Expertise</h4>
-                        <div>
-                          Our team members are cross-trained across lots of
-                          different marketing functions. Your social media
-                          strategist knows how to use conversion rate
-                          optimisation. Your copywriter gets analytics. Which is
-                          great for seeing opportunities others might have
-                          missed.
-                        </div>
-                      </div>
-                      <div class="accordion_body_item">
-                        <h4>Adaptive Execution</h4>
-                        <div>
-                          Markets evolve. Algorithms change. Attention patterns
-                          shift. Our work evolves with all of the above. We
-                          build flexibility into all campaigns, monitoring
-                          performance signals to refine approach without waiting
-                          for quarterly reviews. Your marketing will roll with
-                          the punches as a result.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <h2>Frequently Asked Questions</h2>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="faq_accordion fade">
+              <div class="faq accordion_item">
+                <div class="faq accordion_header">
+                  <h3>What's your onboarding process like?</h3>
                 </div>
 
-                <div class="accordion_item">
-                  <div class="accordion_header">
-                    <h2>
-                      Content Creation Marketing Agency - Let Us Help You
-                      Succeed
-                    </h2>
-                  </div>
-                  <div class="accordion_body">
-                    <div class="accordion_content">
-                      <p>Відповідь на питання 2.</p>
-                    </div>
-                  </div>
+                <div class="faq accordion_body">
+                  We start with a discovery session to understand your goals and
+                  challenges, creating a roadmap with clear milestones and
+                  metrics.  Once approved, we'll gather your team for an
+                  alignment workshop. We believe in momentum, not endless
+                  planning, so the process kicks off quickly.
+                </div>
+              </div>
+
+              <div class="faq accordion_item">
+                <div class="faq accordion_header">
+                  <h3>
+                    Do you require minimum budgets as a full service creative
+                    marketing company?
+                  </h3>
                 </div>
 
-                <div class="accordion_item">
-                  <div class="accordion_header">
-                    <h2>
-                      MARODON - Where Analysis, Strategy and Creativity Come
-                      Together Perfectly
-                    </h2>
-                  </div>
-                  <div class="accordion_body">
-                    <div class="accordion_content">
-                      <p>Відповідь на питання 3.</p>
-                    </div>
-                  </div>
+                <div class="faq accordion_body">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Nesciunt expedita earum deleniti ipsam, cum molestiae fuga
+                  ducimus eius sint. Vitae porro, quia ad officiis aliquid
+                  consectetur cupiditate tempore non at.
+                </div>
+              </div>
+
+              <div class="faq accordion_item">
+                <div class="faq accordion_header">
+                  <h3>
+                    How do you measure success as a content creation and
+                    marketing agency?
+                  </h3>
+                </div>
+
+                <div class="faq accordion_body">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas
+                  perferendis ab ipsam aspernatur deleniti voluptatum in magni
+                  nesciunt, vel optio ipsum incidunt voluptate illo at velit
+                  iure! Fugit, itaque vero!
                 </div>
               </div>
             </div>
-          </section>
-
-          <!-- FAQ accordion -->
-          <section class="faq_section">
-            <div class="faq_title fade">
-              <div class="container">
-                <h2>Frequently Asked Questions</h2>
-              </div>
-            </div>
-
-            <div class="container">
-              <div class="faq_accordion fade">
-                <div class="faq accordion_item">
-                  <div class="faq accordion_header">
-                    <h3>What's your onboarding process like?</h3>
-                  </div>
-
-                  <div class="faq accordion_body">
-                    We start with a discovery session to understand your goals
-                    and challenges, creating a roadmap with clear milestones and
-                    metrics.  Once approved, we'll gather your team for an
-                    alignment workshop. We believe in momentum, not endless
-                    planning, so the process kicks off quickly.
-                  </div>
-                </div>
-
-                <div class="faq accordion_item">
-                  <div class="faq accordion_header">
-                    <h3>
-                      Do you require minimum budgets as a full service creative
-                      marketing company?
-                    </h3>
-                  </div>
-
-                  <div class="faq accordion_body">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Nesciunt expedita earum deleniti ipsam, cum molestiae fuga
-                    ducimus eius sint. Vitae porro, quia ad officiis aliquid
-                    consectetur cupiditate tempore non at.
-                  </div>
-                </div>
-
-                <div class="faq accordion_item">
-                  <div class="faq accordion_header">
-                    <h3>
-                      How do you measure success as a content creation and
-                      marketing agency?
-                    </h3>
-                  </div>
-
-                  <div class="faq accordion_body">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quas perferendis ab ipsam aspernatur deleniti voluptatum in
-                    magni nesciunt, vel optio ipsum incidunt voluptate illo at
-                    velit iure! Fugit, itaque vero!
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          </div>
+        </section>
       </main>
 
       <!-- Footer -->

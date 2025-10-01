@@ -82,9 +82,13 @@
 
 
     // Попап
-    btn.addEventListener('click', () => overlay.style.display = 'flex');
-    closeBtn.addEventListener('click', () => overlay.style.display = 'none');
+    btn.addEventListener('click', () => {
+      overlay.style.display = 'flex';
+      lockScroll();
+    });
+    closeBtn.addEventListener('click', () => { overlay.style.display = 'none'; unlockScroll(); });
     overlay.addEventListener('click', e => { if (e.target === overlay) overlay.style.display = 'none'; });
+
 
     // Slider in front page
     const homeSwiper = new Swiper('.home_slider', {
@@ -117,6 +121,22 @@
     }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
+
+    // Service sub item page show More
+    const contentWrapper = document.querySelector(".services_sub_wrapper");
+    const contentInner = document.querySelector(".services_sub");
+    const btnMore = document.querySelector(".btn_more");
+
+    if (window.innerWidth <= 768) {
+      if (contentInner.scrollHeight > 1500) {
+        btnMore.classList.add("show");
+      }
+
+      btnMore.addEventListener("click", function () {
+        contentWrapper.classList.add("open");
+        btnMore.style.display = "none"; // сховати кнопку після кліку
+      });
+    }
 
     // Delegation
     document.body.addEventListener('click', onBodyClick);
