@@ -60,26 +60,126 @@
       });
     });
 
-    // Let's talk popup  
+    // // Let's talk popup  
+    // const btn = document.querySelector('.btn_lets_talk');
+    // // const block = document.querySelector('.views_content');
+    // const block = btn.parentElement;
+    // const overlay = document.querySelector('.overlay');
+    // const closeBtn = document.querySelector('.popup_close');
+    // const header = document.querySelector('.header');
+
+    // window.addEventListener('scroll', () => {
+    //   const blockRect = block.getBoundingClientRect();
+    //   const headerHeight = header.offsetHeight; // висота хедера
+
+    //   // Якщо верх блоку ховається під хедером
+    //   if (blockRect.top < headerHeight) {
+    //     btn.classList.add('btn_fixed');
+    //   } else {
+    //     btn.classList.remove('btn_fixed');
+    //   }
+    // });
+
+
+    // // Попап
+    // btn.addEventListener('click', () => {
+    //   overlay.style.display = 'flex';
+    //   lockScroll();
+    // });
+    // closeBtn.addEventListener('click', () => { overlay.style.display = 'none'; unlockScroll(); });
+    // overlay.addEventListener('click', e => { if (e.target === overlay) overlay.style.display = 'none'; });
+
+    // CamelCase для змінних/функцій
     const btn = document.querySelector('.btn_lets_talk');
-    // const block = document.querySelector('.views_content');
-    const block = btn.parentElement;
+    const block = btn ? btn.parentElement : null; // якщо слідкувати за блоком
+    const header = document.querySelector('.header');
     const overlay = document.querySelector('.overlay');
     const closeBtn = document.querySelector('.popup_close');
-    const header = document.querySelector('.header');
 
-    window.addEventListener('scroll', () => {
-      const blockRect = block.getBoundingClientRect();
-      const headerHeight = header.offsetHeight; // висота хедера
+    const bottomOffset = 120; // завжди 120px як ти просила
+    let initialTop = 0;
+    let isAtBottom = false;
+    let ticking = false;
 
-      // Якщо верх блоку ховається під хедером
-      if (blockRect.top < headerHeight) {
-        btn.classList.add('btn_fixed');
-      } else {
-        btn.classList.remove('btn_fixed');
+    if (btn) {
+      // Визначає initialTop: якщо в CSS вже задано position:fixed та top, читаємо computedStyle.top.
+      // Інакше беремо btn.getBoundingClientRect().top (позиція у вьюпорті).
+      function updateInitialTop() {
+        const cs = window.getComputedStyle(btn);
+        if (cs.position === 'fixed' && cs.top && cs.top !== 'auto') {
+          // top може бути наприклад "635px"
+          initialTop = parseFloat(cs.top) || 0;
+        } else {
+          // беремо поточну позицію у вьюпорті
+          const rect = btn.getBoundingClientRect();
+          initialTop = rect.top;
+        }
+        // Задаємо inline top, щоб позиція була стабільною незалежно від перерахунку
+        btn.style.top = Math.round(initialTop) + 'px';
+        // переконаємось, що правий відступ є
+        btn.style.right = '20px';
       }
-    });
 
+      // Обчислити і застосувати translateY для опускання кнопки до bottomOffset
+      function moveToBottom() {
+        if (isAtBottom) return;
+        const btnHeight = btn.getBoundingClientRect().height;
+        const targetTop = window.innerHeight - bottomOffset - btnHeight;
+        const delta = targetTop - initialTop;
+        btn.style.transform = `translateY(${Math.round(delta)}px)`;
+        isAtBottom = true;
+      }
+
+      // Повернути вгору (до initialTop)
+      function moveToTop() {
+        if (!isAtBottom) return;
+        btn.style.transform = 'translateY(0)';
+        isAtBottom = false;
+      }
+
+      function checkScroll() {
+        // Тут використовую ту саму логіку, що й раніше: коли "block" заходить під header — опускаємо.
+        // Якщо в тебе інша умова — підстав свій тригер (наприклад, scrollY > 300).
+        const headerHeight = header ? header.offsetHeight : 0;
+        if (!block) {
+          // Якщо немає блоку, можна використовувати просту умову — наприклад, якщо сторінка проскролена більше 100px
+          if (window.scrollY > 100) moveToBottom();
+          else moveToTop();
+          return;
+        }
+
+        const blockRect = block.getBoundingClientRect();
+        if (blockRect.top < headerHeight) {
+          moveToBottom();
+        } else {
+          moveToTop();
+        }
+      }
+
+      // Throttle через rAF
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            checkScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // Оновлюємо initialTop на load та resize (щоб пристосуватись до мобайлу/перевертань)
+      window.addEventListener('load', updateInitialTop);
+      window.addEventListener('resize', () => {
+        // перед перерахунком зберігаємо поточний стан bottom/top
+        const wasAtBottom = isAtBottom;
+        updateInitialTop();
+        // якщо зараз внизу, перерахуємо translate по-новому
+        if (wasAtBottom) moveToBottom();
+      });
+
+      // Викличемо одразу, якщо скрипт підключений внизу сторінки
+      updateInitialTop();
+    }
 
     // Попап
     btn.addEventListener('click', () => {
@@ -88,6 +188,7 @@
     });
     closeBtn.addEventListener('click', () => { overlay.style.display = 'none'; unlockScroll(); });
     overlay.addEventListener('click', e => { if (e.target === overlay) overlay.style.display = 'none'; });
+
 
 
     // Slider in front page
@@ -123,8 +224,10 @@
     sections.forEach(section => observer.observe(section));
 
     // Service sub item page show More
-    const contentWrapper = document.querySelector(".services_sub_wrapper");
-    const contentInner = document.querySelector(".services_sub");
+    // const contentWrapper = document.querySelector(".services_sub_wrapper");
+    // const contentInner = document.querySelector(".services_sub");
+    const contentWrapper = document.querySelector(".more_wrapper");
+    const contentInner = document.querySelector(".more_inner");
     const btnMore = document.querySelector(".btn_more");
 
     if (window.innerWidth <= 768) {
@@ -270,22 +373,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!header || !body) return;
 
     header.addEventListener('click', (e) => {
-      const isOpen = body.classList.contains('open');
+      // const isOpen = body.classList.contains('open');
+
+      body.classList.toggle('open');
+      header.classList.toggle('active');
 
       // закриваємо всі інші
-      accordionItems.forEach(otherItem => {
-        const otherBody = otherItem.querySelector('.accordion_body');
-        const otherHeader = otherItem.querySelector('.accordion_header');
+      // accordionItems.forEach(otherItem => {
+      //   const otherBody = otherItem.querySelector('.accordion_body');
+      //   const otherHeader = otherItem.querySelector('.accordion_header');
 
-        otherBody?.classList.remove('open');
-        otherHeader?.classList.remove('active');
-      });
+      //   otherBody?.classList.remove('open');
+      //   otherHeader?.classList.remove('active');
+      // });
 
       // відкриваємо тільки потрібний
-      if (!isOpen) {
-        body.classList.add('open');
-        header.classList.add('active');
-      }
+      // if (!isOpen) {
+      //   body.classList.add('open');
+      //   header.classList.add('active');
+      // }
     });
   });
 });

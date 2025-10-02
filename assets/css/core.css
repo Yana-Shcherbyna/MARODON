@@ -770,10 +770,28 @@ table th {
 /* Social links end */
 
 /* Let's talk btn*/
-.btn_lets_talk {
+/* .btn_lets_talk {
   position: relative;
   z-index: 90;
   right: 0;
+} */
+.btn_lets_talk {
+  position: fixed;          /* фіксована одразу */
+  right: 20px;
+  top: 635px;
+  bottom: unset;
+  z-index: 90;
+  /* top буде встановлено JS динамічно (щоб врахувати різні сторінки) */
+  /* z-index: 1000; */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  /* transition: transform 360ms cubic-bezier(.22,.9,.31,1); */
+  transition: transform 900ms cubic-bezier(.22,.9,.31,1);
+  will-change: transform;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  /* border-radius: 10px; */
 }
 
 .btn_fixed {
