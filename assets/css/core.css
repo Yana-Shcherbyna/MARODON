@@ -983,7 +983,7 @@ table th {
   margin: 0 8px;
 }
 
-.breadcrumbs_item + .breadcrumbs_item::before {
+.light .breadcrumbs_item + .breadcrumbs_item::before {
   filter: brightness(0) saturate(100%) invert(0%) sepia(9%) saturate(560%)
     hue-rotate(319deg) brightness(84%) contrast(87%);
 }

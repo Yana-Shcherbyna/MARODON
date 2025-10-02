@@ -396,6 +396,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const items = document.querySelectorAll('.about_nums_item');
   const nums = document.querySelectorAll('.about_num');
