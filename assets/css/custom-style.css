@@ -735,6 +735,7 @@
 
 .about_accordion_wrapper {
   padding-bottom: 120px;
+  z-index: 10;
 }
 
 .about_content .single_content {
@@ -806,6 +807,11 @@
 
 .services_list .service_page_item {
   grid-template-rows: minmax(150px, auto) 1fr 20px;
+}
+
+.capabilities{
+  position: relative;
+  z-index: 5;
 }
 
 .capabilities h2,
