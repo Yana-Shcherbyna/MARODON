@@ -231,14 +231,17 @@
     const btnMore = document.querySelector(".btn_more");
 
     if (window.innerWidth <= 768) {
-      if (contentInner.scrollHeight > 1500) {
-        btnMore.classList.add("show");
+      if(containerInner){
+        if (contentInner.scrollHeight > 1500) {
+          btnMore.classList.add("show");
+        }
+  
+        btnMore.addEventListener("click", function () {
+          contentWrapper.classList.add("open");
+          btnMore.style.display = "none"; // сховати кнопку після кліку
+        });
       }
-
-      btnMore.addEventListener("click", function () {
-        contentWrapper.classList.add("open");
-        btnMore.style.display = "none"; // сховати кнопку після кліку
-      });
+      
     }
 
     // Delegation
