@@ -1008,6 +1008,12 @@
   }
 }
 
+@media (max-width: 991px){
+  .about_content .single_content{
+    padding: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .team_list {
     grid-template-columns: repeat(2, 1fr);
@@ -1262,6 +1268,11 @@
 /* Contacts end */
 
 /* Single case page */
+.article_content .single_content {
+  background-color: #fff;
+  padding: 30px 24px;
+}
+
 .article_video{
   width: 100%;
   height: auto;
@@ -1351,6 +1362,12 @@
 @media (max-width: 2440px) {
   .more_articles{
     margin-bottom:calc(40px + (120 - 40) * ((100vw - 320px) / (2400 - 320)));
+  }
+}
+
+@media (max-width: 991px) {
+  .article_content .single_content {
+    padding: 0;
   }
 }
 
