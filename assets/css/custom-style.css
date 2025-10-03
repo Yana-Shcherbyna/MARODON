@@ -1270,7 +1270,8 @@
 /* Single case page */
 .article_content .single_content {
   background-color: #fff;
-  padding: 30px 24px;
+  /* padding: 30px 24px; */
+  padding: 10px 8px;
 }
 
 .article_video{
@@ -1286,7 +1287,7 @@
 
 .article_info_row{
   display: grid;
-  grid-template-columns: 15% 73%;
+  grid-template-columns: 24% 73%;
   gap: 30px;
   margin-bottom: 30px;
   font-size: clamp(
