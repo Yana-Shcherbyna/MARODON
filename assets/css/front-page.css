@@ -205,6 +205,15 @@
   width: 33px;
 }
 
+.views .btn_lets_talk{
+  position: static;
+}
+
+.views .btn_lets_talk.visible{
+  position: fixed;
+  /* top: 100px; */
+}
+
 @media (hover: hover) and (pointer: fine) {
   .btn_reaction:hover {
     color: var(--accent);

@@ -7,7 +7,7 @@
 
     // Burger menu
     const burger = document.querySelector('.menu_burger');
-    const headerMenu = document.querySelector('.header_menu');
+    const headerMenu = document.querySelector('.header_menu_wrapper');
 
     if (burger) {
       burger.addEventListener('click', function () {
@@ -81,7 +81,7 @@
     // });
 
 
-    // // Попап
+    // Попап
     // btn.addEventListener('click', () => {
     //   overlay.style.display = 'flex';
     //   lockScroll();
@@ -111,7 +111,7 @@
           initialTop = parseFloat(cs.top) || 0;
         } else {
           // беремо поточну позицію у вьюпорті
-          const rect = btn.getBoundingClientRect();
+          const rect = btn.getBoundingClientRect();          
           initialTop = rect.top;
         }
         // Задаємо inline top, щоб позиція була стабільною незалежно від перерахунку
@@ -122,12 +122,26 @@
 
       // Обчислити і застосувати translateY для опускання кнопки до bottomOffset
       function moveToBottom() {
+        // if (isAtBottom) return;
+        // const btnHeight = btn.getBoundingClientRect().height;        
+        // const targetTop = window.innerHeight - bottomOffset - btnHeight;
+        // const delta = targetTop - initialTop;
+        // btn.style.transform = `translateY(${Math.round(delta)}px)`;
+        // isAtBottom = true;
+        // btn.classList.add('visible');
         if (isAtBottom) return;
-        const btnHeight = btn.getBoundingClientRect().height;
+        if (initialTop === null) {
+          // якщо кнопки спочатку не видно — вважаємо initialTop = targetTop
+          initialTop = window.innerHeight - bottomOffset - btn.getBoundingClientRect().height;
+        }
+        
+        const btnHeight = btn.getBoundingClientRect().height;        
         const targetTop = window.innerHeight - bottomOffset - btnHeight;
         const delta = targetTop - initialTop;
+      
         btn.style.transform = `translateY(${Math.round(delta)}px)`;
         isAtBottom = true;
+        btn.classList.add('visible');
       }
 
       // Повернути вгору (до initialTop)
@@ -135,6 +149,7 @@
         if (!isAtBottom) return;
         btn.style.transform = 'translateY(0)';
         isAtBottom = false;
+        btn.classList.remove('visible');
       }
 
       function checkScroll() {
@@ -489,4 +504,48 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.35 });
 
   countersObserver.observe(container);
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reactionBoxes = document.querySelectorAll(".reaction_box");
+
+  reactionBoxes.forEach(box => {
+    const postId = box.dataset.postid;
+    const likeBtn = box.querySelector(".btn_like");
+    const dislikeBtn = box.querySelector(".btn_dislike");
+    const counter = box.querySelector(".reaction_count");
+
+    function updateLikes(newCount) {
+      counter.textContent = newCount;
+      likeBtn.querySelector("img").src = "/assets/img/like-filled.svg"; // замінює на червоне
+      dislikeBtn.querySelector("img").src = "/assets/img/like.svg"; // дизлайк стає як лайк
+    }
+
+    // Клік по лайку
+    likeBtn.addEventListener("click", () => {
+      fetch("/wp-admin/admin-ajax.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `action=add_like&post_id=${postId}`
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) updateLikes(data.likes);
+        });
+    });
+
+    // Клік по дизлайку
+    dislikeBtn.addEventListener("click", () => {
+      fetch("/wp-admin/admin-ajax.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `action=add_like&post_id=${postId}`
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) updateLikes(data.likes);
+        });
+    });
+  });
 });
